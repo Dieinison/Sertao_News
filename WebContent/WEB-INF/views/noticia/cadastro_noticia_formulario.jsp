@@ -9,20 +9,49 @@
 <body>
 
 	<h2>Nova notícia</h2>
-
-	<form action:"cadastrarNoticia" method="post" enctype="multipart/form-data">
-       Titulo: <input type="text" name="titulo" /> <br />
-       Subtitulo: <input type="text" name="subtitulo" /> <br />
-       Texto: <input type="text" name="texto" /> <br />
-       Id da seção: <select name="id_secao">  
+	
+	<!-- O nosso form, ao ser submetido, chama uma ação, um método dentro de um @Controller que responde pela
+	URL cadastrarNoticia. Esse método precisa receber os dados da requisição e gravar o que o usuário informou na tela. -->
+	<form action="cadastrar_noticia" method="POST">
+    	<table align="center">
+       		<tr>
+       			<td align="left">Titulo: </td>
+       			<td><input type="text" name="titulo"  /> </td> 
+       		</tr>
+       		
+       		<tr>
+       			<td align="left">Subtitulo:</td>
+       			<td><input type="text" name="subtitulo" /> </td>
+       			</tr>
+       		
+       		<tr>
+       			<td align="left">Texto:</td> 
+       			<td><input type="text" name="texto" /></td>
+       		</tr>
+       		
+       		<tr>
+       			<select name="id_secao">  
                         <c:forEach var="secao" items="${secoes}">
                            <option value= "${secao.id_secao}"> ${secao.titulo} </option> 
                         </c:forEach>
                      </select> 
-                      Seção:
-       Data da Noticia: <input type="date" name="data" />
-       Imagem da Noticia: <input type="file" name="imagem" />
-       <input type="submit" value="Cadastrar" /> </td>
+                      Seção: </td>  
+       		</tr>
+       		
+       		<tr>
+       			<td align="left">Id do autor: </td>
+       			<td><input type="text" name="id_autor"  /> </td> 
+       		</tr>
+       		
+       		<tr>
+       			<td align="left">Data da noticia: </td>
+       			<td><input type="text" name="data_noticia"  /> </td> 
+       		</tr>
+       		
+       		<tr>
+       		<td><input type="submit" value="Cadastrar" /> </td> 
+       		</tr>
+		</table>
 	</form>
 
 </body>

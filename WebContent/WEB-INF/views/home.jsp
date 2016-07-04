@@ -5,14 +5,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Sertão News</title>
-  <link type="text/css" href="resources/css/home.css" rel="stylesheet" /> 
+  <!--  <link type="text/css" href="resources/css/home.css" rel="stylesheet" /> -->
 </head>
 <body>
 	<h1>
       Sertão News <br />
     </h1>
-    
+   
 	<a href="login_formulario">Login</a> <br/>
-	<a href="noticia/cadastro_noticia_formulario"> Cadastar noticia</a> <br/>
+	<a href="cadastrarUsuarioForm"> Cadastre-se</a> <br />
+	<a href="cadastro_noticia_formulario"> Cadastar noticia</a> <br/>
+	<a href="cadastrarSecaoFormulario"> Cadastrar Secao </a> <br/>
+	
 </body>
 </html>

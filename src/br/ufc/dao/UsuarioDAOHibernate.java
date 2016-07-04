@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Repository;
 
@@ -33,27 +33,27 @@ public class UsuarioDAOHibernate implements IUsuarioDAO{
 	}
 
 	@Override
-	public Usuario recuperar(int id) {
+	public Usuario recuperarUsuarioId(int id) {
 		return manager.find(Usuario.class, id);
 	}
 
 	@Override
-	public void apagar(int id) {
-		Usuario u = this.recuperar(id);
+	public void apagar(Usuario usuario) {
+		Usuario u = this.manager.find(Usuario.class, usuario.getId_usuario());;
 		manager.remove(u);
 	}
 
 	@Override
-	public Usuario recuperar(String login) {
-		String hql = "SELECT u FROM USUARIO as u WHERE u.login = :var_login";
-		Query query = manager.createQuery(hql);
-		List<Usuario> usuarios = query.setParameter("var_login", hql).getResultList();
-		
-		if(usuarios.size() != 0){
-			return usuarios.get(0);
+	public Usuario recuperarUsuarioLogin(String login) {
+		String sql = "select u from USUARIO u where u.login = :login";
+		TypedQuery<Usuario> query = this.manager.createQuery(sql,Usuario.class);
+		query.setParameter("login", login).getResultList();
+		List<Usuario> user = query.getResultList();
+		if(user.size() == 0){
+			return null;
+		}else{
+			return user.get(0); 
 		}
-		
-		return null;
 	} 
 	
 	

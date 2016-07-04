@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import br.ufc.dao.INoticiaDAO;
 import br.ufc.model.Noticia;
@@ -16,7 +18,7 @@ import br.ufc.model.Noticia;
 public class NoticiaController {
 
 	@Autowired/* Isso indica ao Spring que ele precisa resolver e injetar a dependência. */
-	@Qualifier("NoticiaDAOHibernate") /* Qualificando a dependência para o Sping saber qual implementação utilizar*/
+	@Qualifier("noticiaDAOHibernate") /* Qualificando a dependência para o Sping saber qual implementação utilizar*/
 	private INoticiaDAO noticiaDAO;
 	
 	@Autowired
@@ -27,7 +29,7 @@ public class NoticiaController {
 	@RequestMapping("/cadastrar_noticia")
 	public String cadastrarNoticia(Noticia noticia){
 		noticiaDAO.cadastrarNoticia(noticia);
-		return "noticia/cadastrar_noticia_formulario";
+		return "noticia/noticia_cadastrada";
 	}
 	
 	@RequestMapping("/cadastro_noticia_formulario")

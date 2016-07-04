@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h2> Usuário cadastrado com sucesso!</h2>
+	<a href="/Sertao_News/"> voltar</a> <br />
 </body>
 </html>

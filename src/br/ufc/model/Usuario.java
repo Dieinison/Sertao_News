@@ -38,8 +38,7 @@ public class Usuario {
 	@Column(name="EMAIL", nullable=false)
 	private String email;
 	
-	@Column(name="E_visivel")
-	private boolean eVisivel;
+	private int id_papel;
 	
 	/* Notícias escritas pelo usuário que é autor. */
 	@OneToMany(mappedBy="autor", targetEntity=Noticia.class,fetch=FetchType.LAZY)
@@ -109,6 +108,14 @@ public class Usuario {
 		this.noticas = noticas;
 	}
 
+	public int getId_papel() {
+		return id_papel;
+	}
+	
+	public void setId_papel(int id_papel) {
+		this.id_papel = id_papel;
+	}
+	
 	public List<Classificado> getClassificados() {
 		return classificados;
 	}
@@ -125,13 +132,6 @@ public class Usuario {
 		this.comentarios = comentarios;
 	}
 	
-	public boolean iseVisivel() {
-		return eVisivel;
-	}
-
-	public void seteVisivel(boolean eVisivel) {
-		this.eVisivel = eVisivel;
-	}
 
 	public List<Papel> getPapeis() {
 		return papeis;
