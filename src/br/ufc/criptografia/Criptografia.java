@@ -1,39 +1,34 @@
 package br.ufc.criptografia;
 
-import java.nio.ByteBuffer;
-import java.nio.charset.Charset;
+import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class Criptografia {
 	
-	private static MessageDigest md;
-	
 	public Criptografia() {}
 	
 	public String criptografar(String senha){
-
 		String convertida = null;
-		
 		try {
-			// Obtendo instância do algoritmo MD5
-			md = MessageDigest.getInstance("MD5");
-			// Passando a senha como uma sequência de bytes para a criptografia 
-			byte[] converter = md.digest(senha.getBytes());
-			
-			//Convetendo os bytes para uma string de retorno no padrão UTF-8
-			//convertida = new String(converter, "UTF-8");
-			convertida = converterString(senha, "UTF-8");
+			// Obtendo instância do algoritmo SHA-256
+			MessageDigest algorithm = MessageDigest.getInstance("SHA-256");
+			// Passando a senha como uma sequência de bytes para a criptografia
+			byte messageDigest[] = algorithm.digest(senha.getBytes("UTF-8"));
+			 
+			StringBuilder hexString = new StringBuilder();
+			for (byte b : messageDigest) {
+			  hexString.append(String.format("%02X", 0xFF & b));
+			}
+			convertida = hexString.toString();	
 			
 		} catch (NoSuchAlgorithmException e) {
+			
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			
 			e.printStackTrace();
 		}
 		return convertida;
-	}
-	
-	public static String converterString(String content, String encode) {  
-	    Charset charset = Charset.forName(encode);  
-	    ByteBuffer bb = charset.encode(content);  
-	    return bb.toString();  
 	}
 }

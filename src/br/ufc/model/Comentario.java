@@ -17,19 +17,16 @@ public class Comentario {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id_comentario;
 	
-	@Column(name = ("ID_NOTICIA"), nullable = false, insertable=false, updatable=false)
+	@Column(name=("ID_NOTICIA"), nullable = false, insertable=false, updatable=false)
 	private Integer id_noticia;
-
-	@Column(name = ("ID_AUTOR"), nullable = false, insertable=false, updatable=false)
-	private Integer id_autor;
 	
 	@ManyToOne(optional=false, cascade=CascadeType.ALL)
-	@JoinColumn(name="ID_NOTICIA", referencedColumnName="ID_NOTICIA")
+	@JoinColumn(name="id_noticia", referencedColumnName="id_noticia")
 	private Noticia noticia;
 	
 	/* Autor do comentário. */
-	@ManyToOne(optional=false, cascade=CascadeType.ALL)
-	@JoinColumn(name="ID_AUTOR", referencedColumnName="ID_USUARIO")
+	@ManyToOne(optional=false)
+	@JoinColumn(name="id_autor", referencedColumnName="id_usuario")
 	private Usuario autor;
 	
 	/* Campo de texto. */
@@ -67,12 +64,7 @@ public class Comentario {
 	public void setTexto(String texto) {
 		this.texto = texto;
 	}	
-	public Integer getId_autor() {
-		return id_autor;
-	}
-	public void setId_autor(Integer id_autor) {
-		this.id_autor = id_autor;
-	}
+	
 	public Integer getId_noticia() {
 		return id_noticia;
 	}

@@ -10,7 +10,7 @@ public interface IUsuarioDAO {
 	public void alterar(Usuario usuario);
 	public void apagar(Usuario usuario);
 	public List<Usuario> listar();
-	public Usuario recuperarUsuarioId(int id);
+	public Usuario recuperarUsuarioId(Integer id);
 	public Usuario recuperarUsuarioLogin(String login);
 
 }

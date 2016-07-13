@@ -4,10 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Noticia cadastrada</title>
+<title>Cadastrar Secao</title>
 </head>
 <body>
-	<h2> Noticia cadastrada! </h2>
-	<a href="/Sertao_News/"> voltar</a> <br />
+	<form action="cadastrarSecao" method="post">
+		Título:<br /> <input type="text" name="titulo" /> <br />
+		Descrição:<br /> <textarea name="descricao" id="mensagem"></textarea><br />
+	<input type="submit" value="Cadastrar" />
+	</form>
 </body>
 </html>

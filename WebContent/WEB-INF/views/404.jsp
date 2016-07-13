@@ -4,10 +4,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Noticia cadastrada</title>
+<title>Nada Encontrado</title>
 </head>
 <body>
-	<h2> Noticia cadastrada! </h2>
-	<a href="/Sertao_News/"> voltar</a> <br />
+	
+	<div>
+	<center>
+		<h1>404</h1> <h3>Error</h3><br />
+		<h5>Esta página não esta disponível.</h5>		
+	</center>
+	</div>
+	
 </body>
 </html>

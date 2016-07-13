@@ -63,8 +63,7 @@
             	
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="login_formulario"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        <li><a href="cadastrarUsuarioForm"><span class="nav navbar-nav navbar-right"></span> Cadastre-se</a></li>
+        <li><a href="logOut"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
       </ul>
     </div>
   </div>
@@ -72,8 +71,10 @@
 
 <div class="container-fluid text-center">
   	<div class="row content">
+  	
     <div class="col-sm-2 sidenav">
     </div>
+    
     <div class="col-sm-8 text-left">
       
       <h1>Bem vindo!</h1>

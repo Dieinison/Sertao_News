@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.ufc.criptografia.Criptografia;
@@ -46,7 +45,7 @@ public class UsuarioController {
 		
 		// Testa se o Usuário já está cadastrado..
 		if(usuarioDAO.recuperarUsuarioLogin(usuario.getLogin()) != null){ 
-			 return "/usuario/cadastrarUsuarioForm";
+			 return "redirect:cadastrarUsuarioForm";
 		}
 		
 		Papel papel = papelDAO.recuperarPapelId(id_ref_leitor);
@@ -59,7 +58,7 @@ public class UsuarioController {
 		usuario.setSenha(senha_criptografada);
 		
 		this.usuarioDAO.inserir(usuario);
-		return "usuario/usuarioInseridoOk";
+		return "redirect:login_formulario";
 	}
 	
 	@RequestMapping("/cadastrarUsuarioForm")
@@ -67,41 +66,4 @@ public class UsuarioController {
 		return "usuario/cadastrarUsuarioForm";
 	}
 	
-	@RequestMapping("/listarUsuario")
-	public String listar(Model model){
-		/* O método recebe um objeto que representa o modelo para o JSP */
-		
-		List<Usuario> usuarios = this.usuarioDAO.listar();
-		model.addAttribute("usuarios",usuarios);
-		
-		/* Dessa forma, será disponibilizado para o JSP um objeto 
-		 * chamado alunos que pode ser acessado via 
-		 * Expression-Language como ${alunos}*/
-	
-		return "usuario/listarUsuario";
-	}
-	
-	@RequestMapping("/apagarUsuario")
-	public String apagarUsuario(Usuario u){
-		this.usuarioDAO.apagar(u);
-		/* Redirecionamento (feito no lado cliente),
-		 * para a mesma pagina jsp atualizada. */
-		return "redirect:listarUsuario";	
-	}
-	
-	@RequestMapping("/alterarUsuarioFormulario")
-	public String alterarAlunoFormulario(int id, Model model){
-		
-		Usuario u = this.usuarioDAO.recuperarUsuarioId(id);
-		model.addAttribute("usuario", u);
-		return "aluno/alterarUsuarioFormulario";
-	
-	}
-	
-	@RequestMapping("/alterarAluno")
-	public String alterarAluno(Usuario usuario){
-		
-		this.usuarioDAO.alterar(usuario);
-		return "redirect:listarAluno";
-	}
 }

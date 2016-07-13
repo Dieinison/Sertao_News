@@ -1,8 +1,14 @@
-Primeiros passos depois de gerar as tabelas:
-No cliente mysql ponha
-insert into PAPEL values (1,'Leitor'),(2,'Jornalista'),(3,'Editor');
-insert into USUARIO(EMAIL,id_papel,LOGIN,NOME,SENHA) values('dieinison@mail.com',3,'dieinison','Dieinison',12345);
+This is a System of a Eletronic Jornal to a discipline of Web Develepment.
+This code was written by Dieinison Jack Freire Braga in June of 2016.
 
+
+1° Step:
+Insert into table PAPEL, the roles; follow the sql code.
+insert into PAPEL values (1,'Leitor'),(2,'Jornalista'),(3,'Editor');
+
+2° Step: 
+Add a 'admin'
+insert into USUARIO(EMAIL,id_papel,LOGIN,NOME,SENHA) values('dieinison@mail.com',3,'dieinison','Dieinison',12345);
 insert into USUARIO(EMAIL,id_papel,LOGIN,NOME,SENHA) values('carlos@mail.com',2,'carlos','Carlos',12345);
 insert into USUARIO(EMAIL,id_papel,LOGIN,NOME,SENHA) values('ana@mail.com',1,'ana','Ana',12345);
 

@@ -59,36 +59,46 @@
         <c:forEach var="secao" items="${secoes}">
 			<li> <a href="listar_por_secao?id_secao=${secao.id_secao}" 
 			title="${secao.descricao}"> ${secao.titulo} </a> </li>
-		</c:forEach> 
+		</c:forEach>
             	
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="login_formulario"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-        <li><a href="cadastrarUsuarioForm"><span class="nav navbar-nav navbar-right"></span> Cadastre-se</a></li>
+        <li><a href="logOut"><span class="glyphicon glyphicon-log-out"></span> Log out</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
 <div class="container-fluid text-center">
-  	<div class="row content">
+  <div class="row content">
+    
     <div class="col-sm-2 sidenav">
+      <p>	<a href="cadastro_noticia_formulario"> Cadastar noticia</a>	</p>
+        <!--  fazer o listar, pra fazer o remover -->
+      <p>	<a href="listar_todas_noticias"> Listar noticias</a>	</p>
+      <!--  Daqui pra baixo, só editores podem -->
+      
+      <p>	<a href="cadastrarSecaoFormulario"> Cadastrar Secao </a> </p>
+      <p>	<a href="cadastrarJornalistaForm"> Cadastrar Jornalista </a> </p>
+      <p>	<a href="classificadoFormulario"> Cadastrar Classificado </a> </p>
     </div>
+    
     <div class="col-sm-8 text-left">
       
       <h1>Bem vindo!</h1>
       <p>Lorem ipsum dolor sit amet.</p>
       <hr>
+      
       <c:forEach var="noticia" items="${noticiasRecentes}">
       	<h4><a href="exibir_noticia?id_noticia=${noticia.id_noticia}"> ${noticia.titulo} </a> </h4>
 	    <h6>${noticia.subtitulo} </h6>
 	  </c:forEach>
-	
-	</div>
+    </div>
     
     <div class="col-sm-2 sidenav">
+      
       <c:forEach var="classificado" items="${classificados}">
-      	
+      
       	<div class="well">
         	<p> <a href="exibir_classificado?id_classificado=${classificado.id_classificado}"> ${classificado.titulo} </a> </p>
 	    	<p>Oferta: </p> 
@@ -97,7 +107,7 @@
 	  	
 	  </c:forEach>
     </div>
-  
+    
   </div>
 </div>
 	

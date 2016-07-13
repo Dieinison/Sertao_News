@@ -1,6 +1,6 @@
 package br.ufc.model;
 
-import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -12,6 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Version;
+
 
 /* @Entity indica que objetos dessa classe se tornem “persistível” no banco de dados*/
 @Entity(name="NOTICIA")
@@ -34,22 +38,27 @@ public class Noticia {
 	@Column(name="TEXTO")
 	private String texto;
 	
-	@Column(name="DATA_NOTICIA")
-	private Timestamp data_noticia;
+	@Version
+	@Column (name = ("DATA_NOTICIA"), nullable = false, columnDefinition="DATETIME")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date data_noticia;
+	
+	/* Comentários da notícia */
+	 @OneToMany(mappedBy="noticia",targetEntity=Comentario.class,cascade=CascadeType.REMOVE)
+	 private List<Comentario> comentarios;
+	
+	@Column (name = "ID_SECAO", nullable = false, insertable=false, updatable=false)
+	private Integer id_secao;
 	
 	/* Chave estrangeira id_secao referencia id_secao da tabela secao. */
-	@ManyToOne(optional=false, cascade=CascadeType.ALL)
-	@JoinColumn(name="ID_SECAO", referencedColumnName="ID_SECAO")
+	@ManyToOne(optional=false)
+	@JoinColumn(name="id_secao", referencedColumnName="id_secao")
 	private Secao secao; 
 	
 	/* Chave estrangeira id_autor referencia id_usuario da tabela usuario. */
-	@ManyToOne(optional=false)
-	@JoinColumn(name="ID_AUTOR", referencedColumnName="ID_USUARIO")
+	@ManyToOne(optional=true)
+	@JoinColumn(name="id_autor", referencedColumnName="id_usuario")
 	private Usuario autor; 
-	
-	/* Comentários da notícia */
-	 @OneToMany(mappedBy="noticia",targetEntity=Comentario.class,cascade=CascadeType.ALL)
-	 private List<Comentario> comentarios; 
 	
 	/* GETTER's and SETTER's */
 	
@@ -85,12 +94,12 @@ public class Noticia {
 		this.texto = texto;
 	}
 
-
-	public void setData_noticia(Timestamp data_noticia) {
-		this.data_noticia = data_noticia;
-	}
-	public Timestamp getData_noticia() {
+	public Date getData_noticia() {
 		return data_noticia;
+	}
+
+	public void setData_noticia(Date data_noticia) {
+		this.data_noticia = data_noticia;
 	}
 
 	public Secao getSecao() {
@@ -99,6 +108,18 @@ public class Noticia {
 
 	public void setSecao(Secao secao) {
 		this.secao = secao;
+	}
+	
+	public Integer getId_secao() {
+		return id_secao;
+	}
+
+	public void setId_secao(Integer id_secao) {
+		this.id_secao = id_secao;
+	}
+
+	public void setId_noticia(Integer id_noticia) {
+		this.id_noticia = id_noticia;
 	}
 
 	public Usuario getAutor() {

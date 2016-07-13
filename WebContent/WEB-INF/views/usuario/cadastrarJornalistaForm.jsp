@@ -15,15 +15,15 @@
 <script src="/resources/js/rn.js" charset="utf-8"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Sertão News - Cadastre-se</title>
+<title>Sertão News - Cadastrar Jornalista</title>
 </head>
 <body>
-	<h2 align="center"> Cadastre-se</h2>
+	<h2 align="center"> Cadastrar Jornalista</h2>
 	
-		<form action="inserirUsuario" method="POST">
+		<form action="inserirJornalista" method="POST">
     	<table align="center">
        		<tr>
-       			<td align="left">Nome: </td>
+       			<td align="left">Nome do jornalista: </td>
        			<td><input type="text" name="nome"  /> </td> 
        		</tr>
        		
@@ -45,13 +45,10 @@
        			</tr>
        		<tr>
 		<tr>
-       		<td><input type="submit" value="Cadastre-se" /> </td> 
+       		<td><input type="submit" value="Cadastrar Jornalista" /> </td> 
        		</tr>
        		
 		</table>
 	</form>
-	<div align="center">
-		<p><a href="/Sertao_News/">voltar</a></p>
-	</div>
 </body>
 </html>
